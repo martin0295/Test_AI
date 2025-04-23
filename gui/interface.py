@@ -40,7 +40,7 @@ class TestCaseGeneratorApp:
 
     def create_widgets(self):
         """Crear y configurar todos los widgets de la interfaz."""
-        frame = tk.Frame(self.root, bg="#2B1D54", bd=2, relief="ridge")
+        frame = tk.Frame(self.root, bg="black", bd=2, relief="ridge")
         frame.place(relx=0.5, rely=0.5, anchor="center", width=440, height=500)
 
         # Botones tipo ventana estilo Mac
@@ -49,50 +49,50 @@ class TestCaseGeneratorApp:
         tk.Canvas(frame, bg="#28C840", height=10, width=10, highlightthickness=0).place(x=40, y=10)
 
         # Título
-        tk.Label(frame, text="TEST AI", font=("Helvetica", 18, "bold"),
-                 fg="#FFD700", bg="#2B1D54").pack(pady=(30, 10))
+        tk.Label(frame, text="bSide", font=("Helvetica", 18, "bold"),
+                 fg="#FFD700", bg="black").pack(pady=(30, 10))
 
         # Selector de modo: Standard o Custom
         self.mode = tk.StringVar(value="standard")
-        mode_frame = tk.Frame(frame, bg="#2B1D54")
+        mode_frame = tk.Frame(frame, bg="black")
         mode_frame.pack(pady=(0, 10))
 
-        tk.Label(mode_frame, text="Mode:", font=("Helvetica", 10, "bold"),
-                 fg="white", bg="#2B1D54").pack(side="left", padx=(0, 10))
+        tk.Label(mode_frame, text="Mode:", font=("Arial", 10, "bold"),
+                 fg="white", bg="#000").pack(side="left", padx=(0, 15))
         tk.Radiobutton(mode_frame, text="Standard", variable=self.mode, value="standard",
-                       command=self.update_mode, bg="#2B1D54", fg="white", selectcolor="#1B1036").pack(side="left")
+                       command=self.update_mode, bg="#000", fg="white", selectcolor="#1B1036").pack(side="left")
         tk.Radiobutton(mode_frame, text="Custom", variable=self.mode, value="custom",
-                       command=self.update_mode, bg="#2B1D54", fg="white", selectcolor="#1B1036").pack(side="left")
+                       command=self.update_mode, bg="#000", fg="white", selectcolor="#1B1036").pack(side="left")
 
         # Prompt
         tk.Label(frame, text="Prompt:", font=("Helvetica", 10, "bold"),
-                 fg="white", bg="#2B1D54").pack(anchor="w", padx=20)
+                 fg="white", bg="#000").pack(anchor="w", padx=20)
         self.prompt_entry = tk.Text(frame, height=10, bg="#000000", fg="#FFD700", insertbackground="black")
         self.prompt_entry.pack(padx=20, fill="x")
 
         # Área personalizada (solo visible en modo Custom)
-        self.custom_frame = tk.Frame(frame, bg="#2B1D54")
-        self.custom_field = tk.Entry(self.custom_frame, bg="#000000", fg="#FFD700")
-        tk.Label(self.custom_frame, text="Campo personalizado:", bg="#2B1D54", fg="white").pack(anchor="w")
+        self.custom_frame = tk.Frame(frame, bg="#000")
+        self.custom_field = tk.Entry(self.custom_frame, bg="#000", fg="#FFD700")
+        tk.Label(self.custom_frame, text="Campo personalizado:", bg="#000", fg="white").pack(anchor="w")
         self.custom_field.pack(fill="x")
 
         # Botón para seleccionar archivos
         tk.Button(frame, text="Seleccionar archivos", command=self.select_files,
-                  bg="#FFF", fg="#000", font=("Helvetica", 11, "bold"),
+                  bg="#FFF", fg="black", font=("Arial", 11, "bold"),
                   relief="flat", width=20).pack(pady=(15, 5))
 
         # Etiqueta con los archivos seleccionados
-        self.file_label = tk.Label(frame, text="Archivo", fg="#FFF", bg="#2B1D54")
+        self.file_label = tk.Label(frame, text="Archivo", fg="#FFF", bg="#000")
         self.file_label.pack()
 
         # Botón para generar los casos de prueba
         tk.Button(frame, text="    Generar Casos    ", command=self.generate,
-                  bg="#FFF", fg="#000", font=("Helvetica", 11, "bold"),
+                  bg="#FFF", fg="black", font=("Arial", 11, "bold"),
                   relief="flat", width=20).pack(pady=(15, 10))
 
         # Pie de página
         tk.Label(frame, text="Quality Assurance",
-                 fg="#FFD700", bg="#2B1D54", font=("Helvetica", 10)).pack(side="bottom", pady=10)
+                 fg="#FFD700", bg="#000", font=("Arial", 10)).pack(side="bottom", pady=10)
 
         # Mostrar u ocultar campos personalizados según modo
         self.update_mode()
